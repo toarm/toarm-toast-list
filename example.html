@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>toarm-toast-list</title>
+
+
+    <script>
+        //        var Polymer = {dom: "shadow"};
+        document.addEventListener("WebComponentsReady", function () {
+            var toastList = document.querySelector("toarm-toast-list");
+
+            setInterval(function () {
+                var clone = document.importNode(document.querySelector("template").content, true);
+                Polymer.dom(toastList).appendChild(clone);
+            }, 1000)
+
+            setInterval(function () {
+                var clone = document.importNode(document.querySelector("template").content, true);
+                Polymer.dom(toastList).appendChild(clone);
+            }, 1700)
+        });
+    </script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="bower_components/toarm-toast-list/toarm-toast-list.html">
+</head>
+<body>
+
+<template>
+    <div style="width: 300px; height: 50px; background-color: rebeccapurple;transition-duration: 600ms;margin-top: 15px;border-radius: 15px;display: flex;justify-content: center;align-items: center">
+        Yeah
+    </div>
+</template>
+
+<toarm-toast-list fade-in fade-out></toarm-toast-list>
+<p>asdfasdf</p>
+<p>asdfasdf</p>
+<p>asdfasdf</p>
+<p>asdfasdf</p>
+<p>asdfasdf</p>
+<p>asdfasdf</p>
+
+</body>
+</html>

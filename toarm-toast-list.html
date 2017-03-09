@@ -1,0 +1,93 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`toarm-toast-list`
+A toast list
+
+@demo demo/index.html
+-->
+
+<dom-module id="toarm-toast-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+
+        <div style="position: relative">
+            <div style="position: absolute">
+                <slot name="toasts"></slot>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'toarm-toast-list',
+
+            properties: {
+                duration: {
+                    type: Number,
+                    value: 2000
+                },
+                fadeIn: {
+                    type: Boolean
+                },
+                fadeOut: {
+                    type: Boolean
+                }
+            },
+            created: function () {
+                var instance = this;
+                Polymer.dom(this).observeNodes(function (info) {
+                    info.addedNodes.filter(function (node) {
+                        return (node.nodeType === Node.ELEMENT_NODE);
+                    }).forEach(function (element) {
+                        console.log(element.nodeName);
+                        if (instance.fadeIn === true) {
+                            instance._appendWithTransition(element);
+                        } else {
+                            element.setAttribute("slot", "toasts");
+                            instance.distributeContent();
+                            instance._startTimer(element);
+                        }
+                    });
+                });
+            },
+            _startTimer: function (element) {
+                var instance = this;
+                setTimeout(function () {
+                    if (instance.fadeOut === true) {
+                        function _transEnd() {
+                            element.removeEventListener("transitionend", _transEnd);
+                            Polymer.dom(instance).removeChild(element);
+                        }
+                        element.addEventListener("transitionend", _transEnd);
+                        element.style.opacity = 0;
+                    } else {
+                        Polymer.dom(instance).removeChild(element);
+                    }
+                }, this.duration);
+            },
+            _appendWithTransition: function (element) {
+                var instance = this;
+                element.style.opacity = 0;
+                element.setAttribute("slot", "toasts");
+                instance.distributeContent();
+
+                Polymer.RenderStatus.afterNextRender(instance, function () {
+                    function _transEnd() {
+                        element.removeEventListener("transitionend", _transEnd);
+                        instance._startTimer(element)
+                    }
+
+                    element.addEventListener("transitionend", _transEnd);
+                    element.style.opacity = 1;
+                });
+            }
+        });
+    </script>
+</dom-module>
+
