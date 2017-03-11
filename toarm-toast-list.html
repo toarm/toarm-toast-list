@@ -12,12 +12,43 @@ A toast list
         <style>
             :host {
                 display: block;
+                z-index: 9999;
+            }
+
+            :host([position="left"]) #content {
+                left: 0;
+                right: auto;
+            }
+
+            :host([position="right"]) #content {
+                right: 0;
+                left: auto;
+            }
+
+            :host([position="center"]) #content {
+                left: 50%;
+                right: auto;
+            }
+
+            :host([position="center"]) #centerContent {
+                left: -50%;
+            }
+
+            #content {
+                position: absolute;
+            }
+
+            #centerContent {
+                position: relative;
+                z-index: 9999;
             }
         </style>
 
         <div style="position: relative">
-            <div style="position: absolute">
-                <slot name="toasts"></slot>
+            <div id="content">
+                <div  id="centerContent">
+                    <slot name="toasts"></slot>
+                </div>
             </div>
         </div>
     </template>

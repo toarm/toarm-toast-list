@@ -25,13 +25,10 @@ A toast list
                 -webkit-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
                 -moz-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
                 box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                z-index: 99999;
             }
 
             #content {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-direction: row;
                 width: 100%;
                 height: 100%;
                 padding: 12px 15px;
@@ -39,6 +36,7 @@ A toast list
                 color: #ffffff;
                 font-size: 1.05em;
                 @apply(--content-mixin);
+                text-align: left;
             }
 
             #content iron-icon {
