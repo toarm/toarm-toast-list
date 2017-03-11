@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="icons/error-icon.html">
+
+<!--
+`toarm-toast-error`
+A toast list
+
+@demo demo/index.html
+-->
+
+<dom-module id="toarm-toast-error">
+    <template>
+        <style>
+            :host {
+                display: block;
+                transition-duration: 600ms;
+                transition: 600ms;
+                background-color: #cc0000;
+                margin: 15px;
+                max-width: 270px;
+                min-height: 70px;
+                border-radius: 15px;
+                -webkit-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+            }
+
+            #content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row;
+                width: 100%;
+                height: 100%;
+                padding: 12px 15px;
+                box-sizing: border-box;
+                color: #ffffff;
+                font-size: 1.05em;
+                @apply(--content-mixin);
+            }
+
+            #content iron-icon {
+                color: #ffffff;
+                height: 42px;
+                width: 42px;
+                margin-right: 10px;
+                @apply(--icon-mixin);
+            }
+        </style>
+        <div id="content">
+            <iron-icon icon="warning"></iron-icon>
+            <slot>This is a ERROR message</slot>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'toarm-toast-error',
+            properties: {
+                duration: {
+                    type: Number,
+                    value: 3000
+                },
+                fadeIn: {
+                    type: Boolean
+                },
+                fadeOut: {
+                    type: Boolean
+                }
+            }
+        });
+    </script>
+</dom-module>

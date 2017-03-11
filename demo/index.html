@@ -1,28 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
     <title>toarm-toast-list demo</title>
+    <script>
+        //                var Polymer = {dom: "shadow"};
+        //        document.addEventListener("WebComponentsReady", function () {
+        //            var toastList = document.querySelector("toarm-toast-list");
+        //
+        //            setInterval(function () {
+        //                var clone = document.importNode(document.querySelector("template").content, true);
+        //                Polymer.dom(toastList).appendChild(clone);
+        //            }, 1000)
+        //
+        //            setInterval(function () {
+        //                var clone = document.importNode(document.querySelector("template").content, true);
+        //                Polymer.dom(toastList).appendChild(clone);
+        //            }, 1700)
+        //        });
 
+        function showError() {
+            var toastList = document.querySelector("toarm-toast-list");
+            var clone = document.importNode(document.querySelector("#errorTemplate").content, true);
+            Polymer.dom(toastList).appendChild(clone);
+        }
+
+        function showWarning() {
+            var toastList = document.querySelector("toarm-toast-list");
+            var clone = document.importNode(document.querySelector("#warningTemplate").content, true);
+            Polymer.dom(toastList).appendChild(clone);
+        }
+
+        function showCustom() {
+            var toastList = document.querySelector("toarm-toast-list");
+        }
+    </script>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../paper-button/paper-button.html">
     <link rel="import" href="../toarm-toast-list.html">
+    <link rel="import" href="../toarm-toast-warning.html">
+    <link rel="import" href="../toarm-toast-error.html">
+
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic toarm-toast-list demo</h3>
-      <demo-snippet>
+</head>
+<body>
+<!--<toarm-toast-error></toarm-toast-error>-->
+
+<template id="errorTemplate">
+    <toarm-toast-error duration="1000" fade-in fade-out>
+        That's a error message!
+    </toarm-toast-error>
+</template>
+
+<template id="warningTemplate">
+    <toarm-toast-warning duration="50000" fade-in fade-out>
+        That's a warning message!
+    </toarm-toast-warning>
+</template>
+
+
+<toarm-toast-list></toarm-toast-list>
+
+<div class="vertical-section-container centered">
+    <h3>Basic toarm-toast-list demo</h3>
+    <demo-snippet>
+        Use the buttons to display toasts.
+        <p>
+            <paper-button raised style="background-color: #FFCC00;color:#ffffff" onclick="showWarning()">warning
+            </paper-button>
+            <paper-button raised style="background-color: #cc0000;color:#ffffff" onclick="showError()">error
+            </paper-button>
+        </p>
         <template>
-          <toarm-toast-list></toarm-toast-list>
+
+            <toarm-toast-list></toarm-toast-list>
         </template>
-      </demo-snippet>
-    </div>
-  </body>
+    </demo-snippet>
+</div>
+</body>
 </html>

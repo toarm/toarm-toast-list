@@ -24,17 +24,24 @@ A toast list
 
     <script>
         Polymer({
-
             is: 'toarm-toast-list',
-
             properties: {
+                /**
+                 * The duration a toast is shown before it disappears
+                 */
                 duration: {
                     type: Number,
-                    value: 2000
+                    value: 3000
                 },
+                /**
+                 * Indicates if the toasts should fade in if possible. Make sure you've set a transition-duration on your elements.
+                 */
                 fadeIn: {
                     type: Boolean
                 },
+                /**
+                 * Indicates if the toasts should fade out if possible. Make sure you've set a transition-duration on your elements.
+                 */
                 fadeOut: {
                     type: Boolean
                 }
@@ -46,7 +53,7 @@ A toast list
                         return (node.nodeType === Node.ELEMENT_NODE);
                     }).forEach(function (element) {
                         console.log(element.nodeName);
-                        if (instance.fadeIn === true) {
+                        if (element.fadeIn === true) {
                             instance._appendWithTransition(element);
                         } else {
                             element.setAttribute("slot", "toasts");
@@ -59,17 +66,18 @@ A toast list
             _startTimer: function (element) {
                 var instance = this;
                 setTimeout(function () {
-                    if (instance.fadeOut === true) {
+                    if (element.fadeOut === true) {
                         function _transEnd() {
                             element.removeEventListener("transitionend", _transEnd);
                             Polymer.dom(instance).removeChild(element);
                         }
+
                         element.addEventListener("transitionend", _transEnd);
                         element.style.opacity = 0;
                     } else {
                         Polymer.dom(instance).removeChild(element);
                     }
-                }, this.duration);
+                }, element.duration);
             },
             _appendWithTransition: function (element) {
                 var instance = this;
@@ -90,4 +98,3 @@ A toast list
         });
     </script>
 </dom-module>
-
