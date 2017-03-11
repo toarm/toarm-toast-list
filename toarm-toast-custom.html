@@ -5,7 +5,7 @@
 
 <!--
 `toarm-toast-custom`
-A toast list
+A bare toast element with a minimal set of css.
 
 @demo demo/index.html
 -->
@@ -44,16 +44,25 @@ A toast list
         Polymer({
             is: 'toarm-toast-custom',
             properties: {
+                /**
+                 * The duration a toast is shown before it disappears
+                 */
                 duration: {
                     type: Number,
                     value: 3000
                 },
+                /**
+                 * Indicates if the toasts should fade in if possible. Make sure you've set a transition-duration on your elements.
+                 */
                 fadeIn: {
                     type: Boolean
                 },
+                /**
+                 * Indicates if the toasts should fade out if possible. Make sure you've set a transition-duration on your elements.
+                 */
                 fadeOut: {
                     type: Boolean
-                }
+                },
             }
         });
     </script>

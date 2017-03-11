@@ -1,4 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
+<!--<link rel="import" href="toarm-toast-error.html">-->
+<!--<link rel="import" href="toarm-toast-warning.html">-->
+<!--<link rel="import" href="toarm-toast-error.html">-->
 
 <!--
 `toarm-toast-list`
@@ -57,25 +60,6 @@ A toast list
         Polymer({
             is: 'toarm-toast-list',
             properties: {
-                /**
-                 * The duration a toast is shown before it disappears
-                 */
-                duration: {
-                    type: Number,
-                    value: 3000
-                },
-                /**
-                 * Indicates if the toasts should fade in if possible. Make sure you've set a transition-duration on your elements.
-                 */
-                fadeIn: {
-                    type: Boolean
-                },
-                /**
-                 * Indicates if the toasts should fade out if possible. Make sure you've set a transition-duration on your elements.
-                 */
-                fadeOut: {
-                    type: Boolean
-                },
                 /**
                  * Indicates if the toast elements are displayed <u>left</u>, <u>center</u> or <u>right</u>.
                  */

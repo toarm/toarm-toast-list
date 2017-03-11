@@ -5,7 +5,7 @@
 
 <!--
 `toarm-toast-warning`
-A toast list
+A toast warning element
 
 @demo demo/index.html
 -->
@@ -22,9 +22,9 @@ A toast list
                 min-height: 70px;
                 margin: 15px;
                 border-radius: 15px;
-                -webkit-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
-                -moz-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
-                box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                -webkit-box-shadow: 1px 1px 14px 0px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 14px 0px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 14px 0px rgba(0, 0, 0, 0.75);
                 z-index: 99999;
             }
 
@@ -57,16 +57,25 @@ A toast list
         Polymer({
             is: 'toarm-toast-warning',
             properties: {
+                /**
+                 * The duration a toast is shown before it disappears
+                 */
                 duration: {
                     type: Number,
                     value: 3000
                 },
+                /**
+                 * Indicates if the toasts should fade in if possible. Make sure you've set a transition-duration on your elements.
+                 */
                 fadeIn: {
                     type: Boolean
                 },
+                /**
+                 * Indicates if the toasts should fade out if possible. Make sure you've set a transition-duration on your elements.
+                 */
                 fadeOut: {
                     type: Boolean
-                }
+                },
             }
         });
     </script>
