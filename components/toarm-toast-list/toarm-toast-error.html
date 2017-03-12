@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="icons/error-icon.html">
+
+<!--
+`toarm-toast-error`
+A toast error element
+
+@demo demo/index.html
+-->
+
+<dom-module id="toarm-toast-error">
+    <template>
+        <style>
+            :host {
+                display: block;
+                transition-duration: 600ms;
+                transition: 600ms;
+                background-color: #cc0000;
+                margin: 15px;
+                max-width: 270px;
+                min-height: 70px;
+                border-radius: 15px;
+                -webkit-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                z-index: 99999;
+            }
+
+            #content {
+                width: 100%;
+                height: 100%;
+                padding: 12px 15px;
+                box-sizing: border-box;
+                color: #ffffff;
+                font-size: 1.05em;
+                @apply(--content-mixin);
+                text-align: left;
+            }
+
+            #content iron-icon {
+                color: #ffffff;
+                height: 42px;
+                width: 42px;
+                margin-right: 10px;
+                @apply(--icon-mixin);
+            }
+        </style>
+        <div id="content">
+            <iron-icon icon="warning"></iron-icon>
+            <slot>This is a ERROR message</slot>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'toarm-toast-error',
+            properties: {
+                /**
+                 * The duration a toast is shown before it disappears
+                 */
+                duration: {
+                    type: Number,
+                    value: 3000
+                },
+                /**
+                 * Indicates if the toasts should fade in if possible. Make sure you've set a transition-duration on your elements.
+                 */
+                fadeIn: {
+                    type: Boolean
+                },
+                /**
+                 * Indicates if the toasts should fade out if possible. Make sure you've set a transition-duration on your elements.
+                 */
+                fadeOut: {
+                    type: Boolean
+                },
+            }
+        });
+    </script>
+</dom-module>

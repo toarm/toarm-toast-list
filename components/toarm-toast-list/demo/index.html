@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>toarm-toast-list demo</title>
+    <script>
+        function showError(positition) {
+            var toastList = document.querySelector("toarm-toast-list#" + positition);
+            var clone = document.importNode(document.querySelector("#errorTemplate").content, true);
+            Polymer.dom(toastList).appendChild(clone);
+        }
+
+        function showWarning(positition) {
+            var toastList = document.querySelector("toarm-toast-list#" + positition);
+            var clone = document.importNode(document.querySelector("#warningTemplate").content, true);
+            Polymer.dom(toastList).appendChild(clone);
+        }
+
+        function showCustom(positition) {
+            var toastList = document.querySelector("toarm-toast-list#" + positition);
+            var clone = document.importNode(document.querySelector("#customTemplate").content, true);
+            Polymer.dom(toastList).appendChild(clone);
+        }
+    </script>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../paper-button/paper-button.html">
+    <link rel="import" href="../toarm-toast-list.html">
+    <link rel="import" href="../toarm-toast-warning.html">
+    <link rel="import" href="../toarm-toast-error.html">
+    <link rel="import" href="../toarm-toast-custom.html">
+
+    <style>
+        toarm-toast-custom, toarm-toast-error, toarm-toast-warning {
+            width: 270px;
+        }
+    </style>
+
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+</head>
+<body>
+
+<template id="errorTemplate">
+    <toarm-toast-error duration="3000" fade-in fade-out>
+        That's a error message!
+    </toarm-toast-error>
+</template>
+
+<template id="warningTemplate">
+    <toarm-toast-warning duration="3000" fade-in fade-out>
+        That's a warning message!
+    </toarm-toast-warning>
+</template>
+
+<template id="customTemplate">
+    <toarm-toast-custom duration="3000" fade-in fade-out>
+        CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM
+    </toarm-toast-custom>
+</template>
+
+
+<toarm-toast-list id="left" position="left" style="position: fixed;width: 100%"></toarm-toast-list>
+
+<toarm-toast-list id="center" position="center" style="position: fixed;width: 100%"></toarm-toast-list>
+
+<toarm-toast-list id="right" position="right" style="position: fixed;width: 100%;right: 25px"></toarm-toast-list>
+
+<div class="vertical-section-container centered">
+    <h3>Demo position="left"</h3>
+    <demo-snippet>
+        Use templates and appendChild to display toasts.
+        <template>
+            <template>
+                <toarm-toast-error
+                        duration="3000" fade-in fade-out>
+                    That's a error message!
+                </toarm-toast-error>
+            </template>
+
+            <script>
+                var toastList = document.querySelector...;
+                var clone = document.importNode(document.querySelector("template").content, true);
+                Polymer.dom(toastList).appendChild(clone);
+            </script>
+        </template>
+    </demo-snippet>
+
+
+    <h3>Demo position="left"</h3>
+    <demo-snippet>
+        Use the buttons to display toasts.
+        <p>
+            <paper-button raised style="background-color: #FFCC00;color:#ffffff" onclick="showWarning('left')">warning
+            </paper-button>
+            <paper-button raised style="background-color: #cc0000;color:#ffffff" onclick="showError('left')">error
+            </paper-button>
+            <paper-button raised style="background-color: rebeccapurple;color:#ffffff" onclick="showCustom('left')">
+                custom
+            </paper-button>
+        </p>
+        <template>
+            <template>
+                <toarm-toast-error
+                        duration="3000" fade-in fade-out>
+                    That's a error message!
+                </toarm-toast-error>
+            </template>
+
+            <toarm-toast-list position="left">
+
+            </toarm-toast-list>
+        </template>
+    </demo-snippet>
+
+    <h3>Demo position="right"</h3>
+    <demo-snippet>
+        Use the buttons to display toasts.
+        <p>
+            <paper-button raised style="background-color: #FFCC00;color:#ffffff" onclick="showWarning('right')">warning
+            </paper-button>
+            <paper-button raised style="background-color: #cc0000;color:#ffffff" onclick="showError('right')">error
+            </paper-button>
+            <paper-button raised style="background-color: rebeccapurple;color:#ffffff" onclick="showCustom('right')">
+                custom
+            </paper-button>
+        </p>
+        <template>
+            <template>
+                <toarm-toast-warning duration="3000" fade-in fade-out>
+                    That's a warning message!
+                </toarm-toast-warning>
+            </template>
+
+            <toarm-toast-list position="left">
+
+            </toarm-toast-list>
+        </template>
+    </demo-snippet>
+
+    <h3>Demo position="center"</h3>
+    <demo-snippet>
+        Use the buttons to display toasts.
+        <p>
+            <paper-button raised style="background-color: #FFCC00;color:#ffffff" onclick="showWarning('center')">warning
+            </paper-button>
+            <paper-button raised style="background-color: #cc0000;color:#ffffff" onclick="showError('center')">error
+            </paper-button>
+            <paper-button raised style="background-color: rebeccapurple;color:#ffffff" onclick="showCustom('center')">
+                custom
+            </paper-button>
+        </p>
+        <template>
+            <template>
+                <toarm-toast-warning duration="3000" fade-in fade-out>
+                    That's a warning message!
+                </toarm-toast-warning>
+            </template>
+
+            <toarm-toast-list position="left">
+
+            </toarm-toast-list>
+        </template>
+    </demo-snippet>
+</div>
+</body>
+</html>

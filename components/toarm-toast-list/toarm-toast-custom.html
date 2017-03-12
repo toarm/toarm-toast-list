@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="icons/warning-icon.html">
+
+<!--
+`toarm-toast-custom`
+A bare toast element with a minimal set of css.
+
+@demo demo/index.html
+-->
+
+<dom-module id="toarm-toast-custom">
+    <template>
+        <style>
+            :host {
+                display: block;
+                transition-duration: 600ms;
+                transition: 600ms;
+                z-index: 99999;
+                margin: 15px;
+                border-radius: 15px;
+                -webkit-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+                box-shadow: 1px 1px 14px 0px rgba(0,0,0,0.75);
+            }
+
+            #content {
+                width: 100%;
+                height: 100%;
+                padding: 12px 15px;
+                box-sizing: border-box;
+                color: #000;
+                font-size: 1.05em;
+                @apply(--content-mixin);
+            }
+        </style>
+        <div id="content">
+            <slot>This is a CUSTOM message</slot>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'toarm-toast-custom',
+            properties: {
+                /**
+                 * The duration a toast is shown before it disappears
+                 */
+                duration: {
+                    type: Number,
+                    value: 3000
+                },
+                /**
+                 * Indicates if the toasts should fade in if possible. Make sure you've set a transition-duration on your elements.
+                 */
+                fadeIn: {
+                    type: Boolean
+                },
+                /**
+                 * Indicates if the toasts should fade out if possible. Make sure you've set a transition-duration on your elements.
+                 */
+                fadeOut: {
+                    type: Boolean
+                },
+            }
+        });
+    </script>
+</dom-module>
